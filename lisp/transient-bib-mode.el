@@ -13,5 +13,19 @@
 
 ;;; Code:
 
+(require 'bibtex)
+
+;; Group for customizing the `transient-bib' group using Emacs' built-in
+;; customization interface.
+(defgroup transient-bib nil
+  "Editing and controlling BibTeX/BibLaTeX files from within Emacs."
+  :link '(url-link "https://github.com/KarlJoad/transient-bib")
+  :group 'tools)
+
+;;; Mode
+(define-derived-mode transient-bib-mode nil "Transient-Bib"
+  "Parent major mode from which various sub-modes inherit from."
+  :group 'transient-bib)
+
 (provide 'transient-bib-mode)
 ;;; transient-bib-mode.el ends here
