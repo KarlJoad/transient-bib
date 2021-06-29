@@ -43,6 +43,11 @@
   (interactive)
   (transient-bib-UNIMPLEMENTED "transient-bib-entry-new-placeholder"))
 
+(defun transient-bib-search (search-param search-term)
+  "Search for SEARCH-TERM against the key type SEARCH-PARAM, returning corresponding entry."
+  (interactive "sSearch which keys? \nsWhat to search for: ")
+  (transient-bib-UNIMPLEMENTED "transient-bib-search" '("search-param" "search-term")))
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
