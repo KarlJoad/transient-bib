@@ -1,4 +1,4 @@
-;;; transient-bib-mode.el --- Define the derived transient-bib-mode major-mode -*- lexical-binding t -*-
+;;; transient-bib-mode.el --- Define the derived transient-bib-mode major-mode -*- lexical-binding t; coding: utf-8 -*-
 
 ;; Author: Karl Hallsby <karl@hallsby.com>
 ;; Maintainer: Karl Hallsby <karl@hallsby.com>
