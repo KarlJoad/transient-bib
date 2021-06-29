@@ -38,6 +38,11 @@
                                  func-vars)
                       " ")))
 
+(defun transient-bib-entry-new-placeholder ()
+  "PLACEHOLDER function for creating a new BibTeX/BibLaTeX entry."
+  (interactive)
+  (transient-bib-UNIMPLEMENTED "transient-bib-entry-new-placeholder"))
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
