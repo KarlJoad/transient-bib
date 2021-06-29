@@ -48,6 +48,11 @@
   (interactive "sSearch which keys? \nsWhat to search for: ")
   (transient-bib-UNIMPLEMENTED "transient-bib-search" '("search-param" "search-term")))
 
+(defun transient-bib-search-key (search-key)
+  "Search for SEARCH-KEY against all entry KEYS, returning a corresponding entry."
+  (interactive "sEntry key: ")
+  (transient-bib-UNIMPLEMENTED "transient-bib-search-key" '("search-key")))
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
