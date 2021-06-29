@@ -27,6 +27,17 @@
   "Parent major mode from which various sub-modes inherit from."
   :group 'transient-bib)
 
+(defun transient-bib-UNIMPLEMENTED (func-name &optional func-vars)
+  "If FUNC-NAME and FUNC-VARS provided, print them and UNIMPLEMENTED to message buffer."
+  (message (mapconcat 'identity (append
+                                 (when (not (equal func-name ""))
+                                   (list func-name))
+                                 (list "UNIMPLEMENTED")
+                                 (unless (equal func-vars '())
+                                   (list "with"))
+                                 func-vars)
+                      " ")))
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
