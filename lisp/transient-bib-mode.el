@@ -53,6 +53,11 @@
   (interactive "sEntry key: ")
   (transient-bib-UNIMPLEMENTED "transient-bib-search-key" '("search-key")))
 
+(defun transient-bib-search-author (search-author)
+  "Search for SEARCH-AUTHOR against all entry AUTHORS, returning a corresponding entry."
+  (interactive "sAuthor: ")
+  (transient-bib-UNIMPLEMENTED "transient-bib-search-author" '("search-author")))
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
