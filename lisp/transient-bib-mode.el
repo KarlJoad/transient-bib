@@ -107,6 +107,14 @@
   ["Edit"
    [("e" "Edit" transient-bib-entry-edit)]])
 
+(transient-define-prefix transient-bib-dispatch ()
+  "Invoke a main command to dispatch to a sub-function."
+  :info-manual "(transient-bib)Top"
+  ["Entry Commands"
+   ("e" "Entry" transient-bib-entry)]
+  ["Searching"
+   ("s" "Search" transient-bib-search)])
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
