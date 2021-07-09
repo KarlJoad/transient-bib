@@ -23,6 +23,11 @@
   :link '(url-link "https://github.com/KarlJoad/transient-bib")
   :group 'tools)
 
+(defcustom transient-bib-mode-hook nil
+  "List of functions to call on entry to transient-bib mode."
+  :group 'transient-bib
+  :type 'hook)
+
 ;;; Mode
 (define-derived-mode transient-bib-mode special-mode "Transient-Bib"
   "Parent major mode from which various sub-modes inherit from."
