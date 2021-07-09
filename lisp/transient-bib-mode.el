@@ -14,6 +14,7 @@
 ;;; Code:
 
 (require 'bibtex)
+(require 'transient)
 
 ;; Group for customizing the `transient-bib' group using Emacs' built-in
 ;; customization interface.
