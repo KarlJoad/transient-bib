@@ -130,6 +130,7 @@
     map)
   "Parent keymap for all keymaps of modes derived from `transient-bib-mode'.")
 
+;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
