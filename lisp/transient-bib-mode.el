@@ -86,6 +86,13 @@
    ("a" "Author" transient-bib-search-author)
    ("t" "Title" transient-bib-search-title)])
 
+(transient-define-prefix transient-bib-entry-new ()
+  "Create a new BibTeX/BibLaTeX entry."
+  :info-manual "(transient-bib)New Entry"
+  ["Entry Type"
+   ("a" "Article" bibtex-Article)
+   ("p" "PLACEHOLDER" transient-bib-entry-new-placeholder)])
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
