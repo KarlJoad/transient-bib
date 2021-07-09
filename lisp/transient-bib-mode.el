@@ -120,6 +120,16 @@
   ["Searching"
    ("s" "Search" transient-bib-search)])
 
+(defvar transient-bib-mode-map
+  (let ((map (make-keymap)))
+    (suppress-keymap map t)
+    (define-key map "e" 'transient-bib-entry)
+    (define-key map "s" 'transient-bib-search)
+    (define-key map (kbd "s-k") 'transient-bib-test-Karl)
+    (define-key map "?" 'transient-bib-dispatch)
+    map)
+  "Parent keymap for all keymaps of modes derived from `transient-bib-mode'.")
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
