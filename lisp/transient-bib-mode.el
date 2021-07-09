@@ -99,6 +99,14 @@
    ("a" "Article" bibtex-Article)
    ("p" "PLACEHOLDER" transient-bib-entry-new-placeholder)])
 
+(transient-define-prefix transient-bib-entry ()
+  "Create and manipulate BibTeX/BibLaTeX entries."
+  :info-manual "(transient-bib)Entries"
+  ["Create"
+   [("n" "New" transient-bib-entry-new)]]
+  ["Edit"
+   [("e" "Edit" transient-bib-entry-edit)]])
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
