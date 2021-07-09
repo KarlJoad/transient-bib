@@ -47,6 +47,12 @@
   (interactive)
   (transient-bib-UNIMPLEMENTED "transient-bib-entry-new-placeholder"))
 
+;;;###autoload
+(defun transient-bib-entry-edit ()
+  "Doing things wrong."
+  (interactive)
+  (transient-bib-UNIMPLEMENTED "transient-bib-entry-edit"))
+
 (defun transient-bib-search (search-param search-term)
   "Search for SEARCH-TERM against the key type SEARCH-PARAM, returning corresponding entry."
   (interactive "sSearch which keys? \nsWhat to search for: ")
