@@ -78,6 +78,14 @@
      ["Search by author" transient-bib-search-author t]
      ["Search by title" transient-bib-search-title t])))
 
+(transient-define-prefix transient-bib-search ()
+  "Search BibTeX/BibLaTeX file for an entry."
+  :info-manual "(transient-bib)Searching"
+  ["Search Type"
+   ("k" "Key" transient-bib-search-key)
+   ("a" "Author" transient-bib-search-author)
+   ("t" "Title" transient-bib-search-title)])
+
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
