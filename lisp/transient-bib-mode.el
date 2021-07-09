@@ -23,8 +23,11 @@
   :group 'tools)
 
 ;;; Mode
-(define-derived-mode transient-bib-mode nil "Transient-Bib"
+(define-derived-mode transient-bib-mode special-mode "Transient-Bib"
   "Parent major mode from which various sub-modes inherit from."
+  ;; By inheriting from special-mode, the buffer is made read-only and does not
+  ;; inherit the full standard global keymap (no self-insert-command).
+  ;; See (elisp) Basic Major Modes
   :group 'transient-bib)
 
 (defun transient-bib-UNIMPLEMENTED (func-name &optional func-vars)
