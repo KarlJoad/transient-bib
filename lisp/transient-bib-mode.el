@@ -12,7 +12,7 @@
 ;; similar to how `transient' is used by `magit' to assist in working with Git.
 
 ;;; Code:
-
+;; External Dependencies
 (require 'bibtex)
 (require 'transient)
 
@@ -80,6 +80,7 @@
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
+;; Internal dependencies. MUST be specified at end!
 (require 'transient-bib-search)
 (require 'transient-bib-entry)
 
