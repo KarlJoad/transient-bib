@@ -47,17 +47,6 @@
                                  func-vars)
                       " ")))
 
-(defun transient-bib-entry-new-placeholder ()
-  "PLACEHOLDER function for creating a new BibTeX/BibLaTeX entry."
-  (interactive)
-  (transient-bib-UNIMPLEMENTED "transient-bib-entry-new-placeholder"))
-
-;;;###autoload
-(defun transient-bib-entry-edit ()
-  "Doing things wrong."
-  (interactive)
-  (transient-bib-UNIMPLEMENTED "transient-bib-entry-edit"))
-
 (defun transient-bib-search (search-param search-term)
   "Search for SEARCH-TERM against the key type SEARCH-PARAM, returning corresponding entry."
   (interactive "sSearch which keys? \nsWhat to search for: ")
@@ -97,21 +86,6 @@
    ("a" "Author" transient-bib-search-author)
    ("t" "Title" transient-bib-search-title)])
 
-(transient-define-prefix transient-bib-entry-new ()
-  "Create a new BibTeX/BibLaTeX entry."
-  :info-manual "(transient-bib)New Entry"
-  ["Entry Type"
-   ("a" "Article" bibtex-Article)
-   ("p" "PLACEHOLDER" transient-bib-entry-new-placeholder)])
-
-(transient-define-prefix transient-bib-entry ()
-  "Create and manipulate BibTeX/BibLaTeX entries."
-  :info-manual "(transient-bib)Entries"
-  ["Create"
-   [("n" "New" transient-bib-entry-new)]]
-  ["Edit"
-   [("e" "Edit" transient-bib-entry-edit)]])
-
 (transient-define-prefix transient-bib-dispatch ()
   "Invoke a main command to dispatch to a sub-function."
   :info-manual "(transient-bib)Top"
@@ -134,4 +108,6 @@
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
+(require 'transient-bib-entry)
+
 ;;; transient-bib-mode.el ends here
