@@ -47,26 +47,6 @@
                                  func-vars)
                       " ")))
 
-(defun transient-bib-search (search-param search-term)
-  "Search for SEARCH-TERM against the key type SEARCH-PARAM, returning corresponding entry."
-  (interactive "sSearch which keys? \nsWhat to search for: ")
-  (transient-bib-UNIMPLEMENTED "transient-bib-search" '("search-param" "search-term")))
-
-(defun transient-bib-search-key (search-key)
-  "Search for SEARCH-KEY against all entry KEYS, returning a corresponding entry."
-  (interactive "sEntry key: ")
-  (transient-bib-UNIMPLEMENTED "transient-bib-search-key" '("search-key")))
-
-(defun transient-bib-search-author (search-author)
-  "Search for SEARCH-AUTHOR against all entry AUTHORS, returning a corresponding entry."
-  (interactive "sAuthor: ")
-  (transient-bib-UNIMPLEMENTED "transient-bib-search-author" '("search-author")))
-
-(defun transient-bib-search-title (search-title)
-  "Search for SEARCH-TITLE against all entry TITLES, returning a corresponding entry."
-  (interactive "sTitle: ")
-  (transient-bib-UNIMPLEMENTED "transient-bib-search-title" '("search-title")))
-
 ;; Define the drop-down menu at the top of the screen.
 (easy-menu-define transient-bib-mode-menu transient-bib-mode-map
   "transient-bib menu"
@@ -77,14 +57,6 @@
      ["Search by key" transient-bib-search-key t]
      ["Search by author" transient-bib-search-author t]
      ["Search by title" transient-bib-search-title t])))
-
-(transient-define-prefix transient-bib-search ()
-  "Search BibTeX/BibLaTeX file for an entry."
-  :info-manual "(transient-bib)Searching"
-  ["Search Type"
-   ("k" "Key" transient-bib-search-key)
-   ("a" "Author" transient-bib-search-author)
-   ("t" "Title" transient-bib-search-title)])
 
 (transient-define-prefix transient-bib-dispatch ()
   "Invoke a main command to dispatch to a sub-function."
@@ -108,6 +80,7 @@
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
+(require 'transient-bib-search)
 (require 'transient-bib-entry)
 
 ;;; transient-bib-mode.el ends here
