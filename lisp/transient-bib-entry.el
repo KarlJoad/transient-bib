@@ -21,17 +21,6 @@
   (interactive)
   (transient-bib-UNIMPLEMENTED "transient-bib-entry-edit"))
 
-;; Define the drop-down menu at the top of the screen.
-(easy-menu-define transient-bib-mode-menu transient-bib-mode-map
-  "transient-bib menu"
-  '("transient-bib"
-    ["New Entry" transient-bib-new-entry t]
-    "---"
-    ("Edit Entry"
-     ["Search by key" transient-bib-search-key t]
-     ["Search by author" transient-bib-search-author t]
-     ["Search by title" transient-bib-search-title t])))
-
 (transient-define-prefix transient-bib-entry-new ()
   "Create a new BibTeX/BibLaTeX entry."
   :info-manual "(transient-bib)New Entry"
