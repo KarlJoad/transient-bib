@@ -28,6 +28,18 @@
   :group 'transient-bib
   :type 'hook)
 
+;;; Main keymap. Used when viewing bibliography document.
+;; Must be defined before the major mode, so that the keybindings are set.
+(defvar transient-bib-mode-map
+  (let ((map (make-keymap)))
+    (suppress-keymap map t)
+    (define-key map (kbd "e") 'transient-bib-entry)
+    (define-key map (kbd "s") 'transient-bib-search)
+    (define-key map (kbd "s-k") 'transient-bib-test-Karl)
+    (define-key map (kbd "?") 'transient-bib-dispatch)
+    map)
+  "Parent keymap for all keymaps of modes derived from `transient-bib-mode'.")
+
 ;;; Mode
 (define-derived-mode transient-bib-mode special-mode "Transient-Bib"
   "Parent major mode from which various sub-modes inherit from."
@@ -66,21 +78,11 @@
   ["Searching"
    ("s" "Search" transient-bib-search)])
 
-(defvar transient-bib-mode-map
-  (let ((map (make-keymap)))
-    (suppress-keymap map t)
-    (define-key map "e" 'transient-bib-entry)
-    (define-key map "s" 'transient-bib-search)
-    (define-key map (kbd "s-k") 'transient-bib-test-Karl)
-    (define-key map "?" 'transient-bib-dispatch)
-    map)
-  "Parent keymap for all keymaps of modes derived from `transient-bib-mode'.")
-
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.bib\\'" . transient-bib-mode))
 
 (provide 'transient-bib-mode)
-;; Internal dependencies. MUST be specified at end!
+;; Internal dependencies. MUST be specified at end, otherwise circular dependency
 (require 'transient-bib-search)
 (require 'transient-bib-entry)
 
