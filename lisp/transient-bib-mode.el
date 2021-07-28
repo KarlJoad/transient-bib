@@ -28,6 +28,13 @@
   :group 'transient-bib
   :type 'hook)
 
+(defcustom transient-bib-test nil "Testing customize-able variable."
+  :type 'boolean
+  :require 'bibtex)
+
+(defcustom transient-bib-echo-name "World" "String for echo testing."
+  :type 'string)
+
 ;;; Main keymap. Used when viewing bibliography document.
 ;; Must be defined before the major mode, so that the keybindings are set.
 (defvar transient-bib-mode-map
