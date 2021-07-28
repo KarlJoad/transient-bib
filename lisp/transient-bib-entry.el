@@ -10,6 +10,13 @@
 ;;; Code:
 (require 'transient-bib-mode)
 
+(defmacro transient-bib-entry ()
+  "Open the bibliography entry in a new RW-allowed buffer which uses
+`bibtex-mode'."
+  (let ((entry-buffer (get-buffer-create "transient-bib-entry")))
+    (setq major-mode bibtex-mode)
+    (set-buffer-major-mode entry-buffer)))
+
 (defun transient-bib-entry-new-placeholder ()
   "PLACEHOLDER function for creating a new BibTeX/BibLaTeX entry."
   (interactive)
