@@ -4,6 +4,7 @@
 ;;; Code:
 
 (require 'ert)
+(require 'testcover) ;; Coverage testing (test all branches)
 (require 'transient-bib)
 
 (ert-deftest transient-bib-UNIMPLEMENTED:empty-func-no-vars ()
