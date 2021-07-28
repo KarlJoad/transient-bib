@@ -35,6 +35,17 @@
 (defcustom transient-bib-echo-name "World" "String for echo testing."
   :type 'string)
 
+(defvar transient-bib-override-keys-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-c C-c") 'transient-bib-entry-exit-buffer)
+    map)
+  "Minor mode key map used in transient-bib-override-keys minor mode.")
+
+(define-minor-mode transient-bib-override-keys-mode
+  "Minor mode to override default keybindings with my own for `transient-bib-mode' usage."
+  :init-value t
+  :lighter " transient-bib-override-keys")
+
 ;;; Main keymap. Used when viewing bibliography document.
 ;; Must be defined before the major mode, so that the keybindings are set.
 (defvar transient-bib-mode-map
@@ -53,7 +64,9 @@
   ;; By inheriting from special-mode, the buffer is made read-only and does not
   ;; inherit the full standard global keymap (no self-insert-command).
   ;; See (elisp) Basic Major Modes
-  :group 'transient-bib)
+  :group 'transient-bib
+  (transient-bib-override-keys-mode 1))
+
 
 (defun transient-bib-UNIMPLEMENTED (func-name &optional func-vars)
   "If FUNC-NAME and FUNC-VARS provided, print them and UNIMPLEMENTED to message buffer."
