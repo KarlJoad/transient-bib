@@ -33,6 +33,7 @@ buffer and the file is automatically saved."
         ;; (entry-buffer (get-buffer-create "*transient-bib-entry*"))) ;; Causes some minor modes to be lost
         ;; (entry-buffer (generate-new-buffer "*transient-bib-entry*")))
         (entry-buffer (make-indirect-buffer (current-buffer) "*transient-bib-entry*" nil)))
+    ;; (with-temp-buffer ;; with-temp-buffer will create a temporary buffer
     (save-current-buffer
       ;; TODO: Verification of parent buffer for indirect buffer?
       (switch-to-buffer entry-buffer) ;; TODO: use pop-to-buffer-same-window instead?
