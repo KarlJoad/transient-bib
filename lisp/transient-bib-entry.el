@@ -30,8 +30,9 @@ Once done, the contents of the buffer are copied back to the main bibliography
 buffer and the file is automatically saved."
   (interactive)
   (let ((bib-file-buffer (current-buffer))
-        ;; (entry-buffer (get-buffer-create "transient-bib-entry"))
-        (entry-buffer (make-indirect-buffer (current-buffer) "transient-bib-entry" nil)))
+        ;; (entry-buffer (get-buffer-create "*transient-bib-entry*"))) ;; Causes some minor modes to be lost
+        ;; (entry-buffer (generate-new-buffer "*transient-bib-entry*")))
+        (entry-buffer (make-indirect-buffer (current-buffer) "*transient-bib-entry*" nil)))
     (save-current-buffer
       ;; TODO: Verification of parent buffer for indirect buffer?
       (switch-to-buffer entry-buffer) ;; TODO: use pop-to-buffer-same-window instead?
