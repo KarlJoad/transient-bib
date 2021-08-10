@@ -64,6 +64,8 @@ buffer and the file is automatically saved."
       ;; TODO: Verification of parent buffer for indirect buffer?
       (switch-to-buffer entry-buffer) ;; TODO: use pop-to-buffer-same-window instead?
       (setq inhibit-read-only t)
+      ;; Make the parent bibliography file a buffer-local variable to the ENTRY buffer
+      (defvar-local transient-bib-parent-bib-file (buffer-name bib-file-buffer))
       (bibtex-mode) ;; Set up BibTeX major mode
       (bibtex-set-dialect) ;; No args to use BibTeX or user-defined values
       (bibtex-Article)
