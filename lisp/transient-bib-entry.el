@@ -10,6 +10,14 @@
 ;;; Code:
 (require 'transient-bib-mode)
 
+(defun transient-bib-entry-exit-buffer (&optional clean)
+  "Exit the bibliography's entry buffer and optionally CLEAN the entry using `bibtex-clean-entry'."
+  (interactive)
+  (when clean
+    (bibtex-clean-entry))
+  (save-buffer)
+  (kill-buffer))
+
 (defmacro transient-bib-entry ()
   "Open the bibliography entry in a new RW-allowed buffer which uses
 `bibtex-mode'."
