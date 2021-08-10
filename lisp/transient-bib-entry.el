@@ -28,6 +28,17 @@
   (revert-buffer)
   (kill-buffer contents)) ;; NOTE: Perhaps erase buffer contents instead?
 
+(defvar transient-bib-entry-mode-map
+  (let ((map (make-sparse-keymap)))
+    (set-keymap-parent map transient-bib-mode-map)
+    (define-key map (kbd "C-c C-c") 'transient-bib-entry-exit)
+    map)
+  "Keymap with bindings special to editing individual bibliography entries.")
+
+(define-derived-mode transient-bib-entry-mode transient-bib-mode "Transient-Bib-entry"
+  "Major mode to edit individual bibliography entries."
+  :group 'transient-bib)
+
 (defmacro transient-bib-edit-entry ()
   "Open the bibliography entry in a new RW-allowed buffer using `bibtex-mode'."
   (let ((entry-buffer (get-buffer-create "transient-bib-entry")))
