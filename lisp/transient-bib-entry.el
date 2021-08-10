@@ -66,13 +66,6 @@ buffer and the file is automatically saved."
   (interactive)
   (transient-bib-UNIMPLEMENTED "transient-bib-entry-edit"))
 
-(transient-define-prefix transient-bib-entry-new ()
-  "Create a new BibTeX/BibLaTeX entry."
-  :info-manual "(transient-bib)New Entry"
-  ["Entry Type"
-   ("a" "Article" transient-bib-entry-new-article)
-   ("p" "PLACEHOLDER" transient-bib-entry-new-placeholder)])
-
 (transient-define-prefix transient-bib-entry ()
   "Create and manipulate BibTeX/BibLaTeX entries."
   :info-manual "(transient-bib)Entries"
@@ -80,6 +73,13 @@ buffer and the file is automatically saved."
    [("n" "New" transient-bib-entry-new)]]
   ["Edit"
    [("e" "Edit" transient-bib-entry-edit)]])
+
+(transient-define-prefix transient-bib-entry-new ()
+  "Create a new BibTeX/BibLaTeX entry."
+  :info-manual "(transient-bib)New Entry"
+  ["Entry Type"
+   ("a" "Article" transient-bib-entry-new-article)
+   ("p" "PLACEHOLDER" transient-bib-entry-new-placeholder)])
 
 (provide 'transient-bib-entry)
 ;;; transient-bib-entry.el ends here
