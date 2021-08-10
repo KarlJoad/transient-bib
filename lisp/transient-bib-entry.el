@@ -24,9 +24,8 @@
   (save-buffer)
   (kill-buffer))
 
-(defmacro transient-bib-entry ()
-  "Open the bibliography entry in a new RW-allowed buffer which uses
-`bibtex-mode'."
+(defmacro transient-bib-edit-entry ()
+  "Open the bibliography entry in a new RW-allowed buffer using `bibtex-mode'."
   (let ((entry-buffer (get-buffer-create "transient-bib-entry")))
     (setq major-mode bibtex-mode)
     (set-buffer-major-mode entry-buffer)))
