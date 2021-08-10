@@ -91,6 +91,7 @@ buffer and the file is automatically saved."
   "Major mode to edit individual bibliography entries."
   :group 'transient-bib)
 
+;;; Transient keybindings for handling entries.
 (transient-define-prefix transient-bib-entry ()
   "Create and manipulate BibTeX/BibLaTeX entries."
   :info-manual "(transient-bib)Entries"
