@@ -16,13 +16,17 @@
   :require 'bibtex
   :require 'transient-bib)
 
-(defun transient-bib-entry-exit-buffer (&optional clean)
-  "Exit the bibliography's entry buffer and optionally CLEAN the entry using `bibtex-clean-entry'."
+(defun transient-bib-entry-exit-buffer (contents &optional clean)
+  "Exit an entry buffer, save the CONTENTS of the buffer, and optionally CLEAN the entry using `bibtex-clean-entry'."
   (interactive)
   (when clean
     (bibtex-clean-entry))
+  ;; NOTE: Probably need to insert temp buffer contents at point...
+  ;; TODO: Move point to end of current entry if point is INSIDE an entry.
+  (insert-buffer contents)
   (save-buffer)
-  (kill-buffer))
+  (revert-buffer)
+  (kill-buffer contents)) ;; NOTE: Perhaps erase buffer contents instead?
 
 (defmacro transient-bib-edit-entry ()
   "Open the bibliography entry in a new RW-allowed buffer using `bibtex-mode'."
@@ -58,7 +62,8 @@ buffer and the file is automatically saved."
       ;; (bibtex-clean-entry)
       ;; (setq inhibit-read-only nil) ;; Make the entry buffer read-only again
       ;; TODO: Ensure switching back to main bib file at end.
-      )))
+      )
+    (transient-bib-entry-exit-buffer entry-buffer transient-bib-entry-clean-on-exit)))
 
 ;;;###autoload
 (defun transient-bib-entry-edit ()
