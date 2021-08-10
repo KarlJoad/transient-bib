@@ -10,6 +10,12 @@
 ;;; Code:
 (require 'transient-bib-mode)
 
+(defcustom transient-bib-entry-clean-on-exit t
+  "Whether to clean all bibliography entries before saving to the main bibliography file."
+  :type 'boolean
+  :require 'bibtex
+  :require 'transient-bib)
+
 (defun transient-bib-entry-exit-buffer (&optional clean)
   "Exit the bibliography's entry buffer and optionally CLEAN the entry using `bibtex-clean-entry'."
   (interactive)
