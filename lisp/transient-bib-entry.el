@@ -16,18 +16,21 @@
   :require 'bibtex
   :require 'transient-bib)
 
-(defun transient-bib-entry-exit-buffer (contents &optional clean)
+(defun transient-bib-entry-exit-buffer ()
   "Exit an entry buffer, save the CONTENTS of the buffer, and optionally CLEAN the entry using `bibtex-clean-entry'."
   (interactive)
-  (when clean
-    (bibtex-clean-entry))
-  ;; NOTE: Probably need to insert temp buffer contents at point...
-  ;; TODO: Move point to end of current entry if point is INSIDE an entry.
-  (insert-buffer contents)
-  (save-buffer)
-  (revert-buffer)
-  (kill-buffer contents)) ;; NOTE: Perhaps erase buffer contents instead?
+  (let ((entry-buffer (current-buffer)))
 
+    (when transient-bib-entry-clean-on-exit
+      (bibtex-clean-entry))
+    ;; NOTE: Probably need to insert temp buffer contents at point...
+    ;; TODO: Move point to end of current entry if point is INSIDE an entry.
+    ;; The parent file is the entry buffer's file-local variable.
+    (switch-to-buffer transient-bib-parent-bib-file)
+    (insert-buffer entry-buffer)
+    (save-buffer)
+    (revert-buffer t t t)
+    (kill-buffer entry-buffer))) ;; NOTE: Perhaps erase buffer contents instead?
 
 
 (defmacro transient-bib-edit-entry ()
@@ -65,8 +68,7 @@ buffer and the file is automatically saved."
       ;; NOTE: If using with-temp-buffer, kill-buffer is called for me
       ;; (setq inhibit-read-only nil) ;; Make the entry buffer read-only again
       ;; TODO: Ensure switching back to main bib file at end.
-      )
-    (transient-bib-entry-exit-buffer entry-buffer transient-bib-entry-clean-on-exit)))
+      )))
 
 ;;;###autoload
 (defun transient-bib-entry-edit ()
