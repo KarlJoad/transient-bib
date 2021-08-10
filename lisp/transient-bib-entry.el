@@ -30,13 +30,14 @@ Once done, the contents of the buffer are copied back to the main bibliography
 buffer and the file is automatically saved."
   (interactive)
   (let ((bib-file-buffer (current-buffer))
-        ;; (entry-buffer (get-buffer-create "transient-bib-entry"))
-        (entry-buffer (make-indirect-buffer (current-buffer) "transient-bib-entry" nil)))
+        (entry-buffer (generate-new-buffer "*transient-bib-entry*")))
+    ;; (with-temp-buffer ;; with-temp-buffer will create a temporary buffer
     (save-current-buffer
       ;; TODO: Verification of parent buffer for indirect buffer?
       (switch-to-buffer entry-buffer) ;; TODO: use pop-to-buffer-same-window instead?
       (setq inhibit-read-only t)
-      (bibtex-mode)
+      (bibtex-mode) ;; Set up BibTeX major mode
+      (bibtex-set-dialect) ;; No args to use BibTeX or user-defined values
       (bibtex-Article)
       ;; TODO: Wait until C-c C-c keybinding is pressed before finishing up here.
       ;; NOTE: C-C C-c is bound to bibtex-clean-entry when in bibtex-mode
