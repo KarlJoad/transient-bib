@@ -41,11 +41,10 @@
     (kill-buffer)
     (switch-to-buffer parent-buffer)))
 
-  "Open the bibliography entry in a new RW-allowed buffer using `bibtex-mode'."
-  (let ((entry-buffer (get-buffer-create "transient-bib-entry")))
-    (setq major-mode bibtex-mode)
-    (set-buffer-major-mode entry-buffer)))
+;; TODO: Debug why am having the bibtex-Article expand when emacs first loads,
+;; which causes several problems.
 (defmacro transient-bib-entry-new-or-edit (&rest body)
+  "Opens a new read/write capable buffer in `bibtex-mode' for entering/editing the entry.
 
 (defun transient-bib-entry-new-placeholder ()
   "PLACEHOLDER function for creating a new BibTeX/BibLaTeX entry."
@@ -55,10 +54,8 @@
 (defun transient-bib-entry-new-article ()
   "Create a new article bibliography entry.
 
-Opens a new read/write capable buffer in `bibtex-mode' for entering the entry.
 Once done, the contents of the buffer are copied back to the main bibliography
 buffer and the file is automatically saved."
-  (interactive)
   (let ((bib-file-buffer (current-buffer))
         (entry-buffer (generate-new-buffer "*transient-bib-entry*")))
     ;; (with-temp-buffer ;; with-temp-buffer will create a temporary buffer
