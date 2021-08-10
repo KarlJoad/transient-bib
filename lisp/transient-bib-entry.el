@@ -51,9 +51,6 @@
   (interactive)
   (transient-bib-UNIMPLEMENTED "transient-bib-entry-new-placeholder"))
 
-(defun transient-bib-entry-new-article ()
-  "Create a new article bibliography entry.
-
 Once done, the contents of the buffer are copied back to the main bibliography
 buffer and the file is automatically saved."
   (let ((bib-file-buffer (current-buffer))
@@ -67,13 +64,18 @@ buffer and the file is automatically saved."
       (defvar-local transient-bib-parent-bib-file (buffer-name bib-file-buffer))
       (bibtex-mode) ;; Set up BibTeX major mode
       (bibtex-set-dialect) ;; No args to use BibTeX or user-defined values
-      (bibtex-Article)
+      (progn body)
       ;; TODO: Need to verify that xref tag is unique among all entries in bibtex file
       ;; TODO: Wait until C-c C-c keybinding is pressed before finishing up here.
       ;; NOTE: If using with-temp-buffer, kill-buffer is called for me
       ;; (setq inhibit-read-only nil) ;; Make the entry buffer read-only again
       ;; TODO: Ensure switching back to main bib file at end.
       )))
+
+(defun transient-bib-entry-new-article ()
+  "Create a new article bibliography entry using a child buffer in `bibtex-mode'."
+  (interactive)
+  (transient-bib-entry-new-or-edit bibtex-Article))
 
 ;;;###autoload
 (defun transient-bib-entry-edit ()
