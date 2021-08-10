@@ -52,6 +52,7 @@ buffer and the file is automatically saved."
       (bibtex-mode) ;; Set up BibTeX major mode
       (bibtex-set-dialect) ;; No args to use BibTeX or user-defined values
       (bibtex-Article)
+      ;; TODO: Need to verify that xref tag is unique among all entries in bibtex file
       ;; TODO: Wait until C-c C-c keybinding is pressed before finishing up here.
       ;; NOTE: C-C C-c is bound to bibtex-clean-entry when in bibtex-mode
       ;; (bibtex-clean-entry)
