@@ -46,11 +46,6 @@
 (defmacro transient-bib-entry-new-or-edit (&rest body)
   "Opens a new read/write capable buffer in `bibtex-mode' for entering/editing the entry.
 
-(defun transient-bib-entry-new-placeholder ()
-  "PLACEHOLDER function for creating a new BibTeX/BibLaTeX entry."
-  (interactive)
-  (transient-bib-UNIMPLEMENTED "transient-bib-entry-new-placeholder"))
-
 Once done, the contents of the buffer are copied back to the main bibliography
 buffer and the file is automatically saved."
   (let ((bib-file-buffer (current-buffer))
@@ -71,6 +66,11 @@ buffer and the file is automatically saved."
       ;; (setq inhibit-read-only nil) ;; Make the entry buffer read-only again
       ;; TODO: Ensure switching back to main bib file at end.
       )))
+
+(defun transient-bib-entry-new-placeholder ()
+  "PLACEHOLDER function for creating a new BibTeX/BibLaTeX entry."
+  (interactive)
+  (transient-bib-UNIMPLEMENTED "transient-bib-entry-new-placeholder"))
 
 (defun transient-bib-entry-new-article ()
   "Create a new article bibliography entry using a child buffer in `bibtex-mode'."
