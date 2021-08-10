@@ -41,11 +41,11 @@
     (kill-buffer)
     (switch-to-buffer parent-buffer)))
 
-(defmacro transient-bib-edit-entry ()
   "Open the bibliography entry in a new RW-allowed buffer using `bibtex-mode'."
   (let ((entry-buffer (get-buffer-create "transient-bib-entry")))
     (setq major-mode bibtex-mode)
     (set-buffer-major-mode entry-buffer)))
+(defmacro transient-bib-entry-new-or-edit (&rest body)
 
 (defun transient-bib-entry-new-placeholder ()
   "PLACEHOLDER function for creating a new BibTeX/BibLaTeX entry."
