@@ -28,16 +28,7 @@
   (revert-buffer)
   (kill-buffer contents)) ;; NOTE: Perhaps erase buffer contents instead?
 
-(defvar transient-bib-entry-mode-map
-  (let ((map (make-sparse-keymap)))
-    (set-keymap-parent map transient-bib-mode-map)
-    (define-key map (kbd "C-c C-c") 'transient-bib-entry-exit)
-    map)
-  "Keymap with bindings special to editing individual bibliography entries.")
 
-(define-derived-mode transient-bib-entry-mode transient-bib-mode "Transient-Bib-entry"
-  "Major mode to edit individual bibliography entries."
-  :group 'transient-bib)
 
 (defmacro transient-bib-edit-entry ()
   "Open the bibliography entry in a new RW-allowed buffer using `bibtex-mode'."
@@ -82,6 +73,21 @@ buffer and the file is automatically saved."
   "Doing things wrong."
   (interactive)
   (transient-bib-UNIMPLEMENTED "transient-bib-entry-edit"))
+
+;;; Override keybindings found in BibTeX-mode for easier transient-bib use.
+(defvar transient-bib-entry-mode-map
+  (let ((map (make-sparse-keymap)))
+    (set-keymap-parent map transient-bib-mode-map)
+    (define-key map (kbd "C-c C-c") 'transient-bib-entry-exit-buffer)
+    map)
+  "Keymap with bindings special to editing individual bibliography entries.")
+
+;; NOTE: This derived major mode does NOT become the major mode of the entry
+;; buffer. The entry buffer is in bibtex-mode, but this major mode allows for
+;; remapping keybindings that I want to use that are also used by bibtex-mode.
+(define-derived-mode transient-bib-entry-mode transient-bib-mode "Transient-Bib-entry"
+  "Major mode to edit individual bibliography entries."
+  :group 'transient-bib)
 
 (transient-define-prefix transient-bib-entry ()
   "Create and manipulate BibTeX/BibLaTeX entries."
