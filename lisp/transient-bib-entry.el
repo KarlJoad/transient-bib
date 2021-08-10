@@ -32,6 +32,14 @@
     (revert-buffer t t t)
     (kill-buffer entry-buffer))) ;; NOTE: Perhaps erase buffer contents instead?
 
+;; Need to attach this to the minibuffer when C-g is pressed when entering the
+;; key for a new entry
+(defun transient-bib-entry-kill-buffer ()
+  "Kill the entry buffer."
+  (interactive)
+  (let ((parent-buffer (transient-bib-parent-bib-file)))
+    (kill-buffer)
+    (switch-to-buffer parent-buffer)))
 
 (defmacro transient-bib-edit-entry ()
   "Open the bibliography entry in a new RW-allowed buffer using `bibtex-mode'."
@@ -81,6 +89,7 @@ buffer and the file is automatically saved."
   (let ((map (make-sparse-keymap)))
     (set-keymap-parent map transient-bib-mode-map)
     (define-key map (kbd "C-c C-c") 'transient-bib-entry-exit-buffer)
+    (define-key map (kbd "C-c C-k") 'transient-bib-entry-kill-buffer)
     map)
   "Keymap with bindings special to editing individual bibliography entries.")
 
