@@ -36,7 +36,8 @@ buffer and the file is automatically saved."
       ;; TODO: Verification of parent buffer for indirect buffer?
       (switch-to-buffer entry-buffer) ;; TODO: use pop-to-buffer-same-window instead?
       (setq inhibit-read-only t)
-      (bibtex-mode)
+      (bibtex-mode) ;; Set up BibTeX major mode
+      (bibtex-set-dialect) ;; No args to use BibTeX or user-defined values
       (bibtex-Article)
       ;; TODO: Wait until C-c C-c keybinding is pressed before finishing up here.
       ;; NOTE: C-C C-c is bound to bibtex-clean-entry when in bibtex-mode
